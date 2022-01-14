@@ -1,0 +1,16 @@
+.item {
+    display: flex;
+    align-items: center;
+}
+.item__text {
+    margin-right: 20px;
+}
+
+.item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
