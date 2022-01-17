@@ -5,10 +5,10 @@ const Post = (props) => {
     return (
         <div className={s.item}>
             <img src="https://vk-wiki.ru/wp-content/uploads/2019/06/user-1.png" />
-            <div className={s.item__text}>Post</div>
+            <div className={s.item__text}>{props.message}</div>
             <div>
                 <span>
-                    Like
+                    Like {props.likeCount}
                 </span>
             </div>
         </div>
