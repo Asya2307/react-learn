@@ -1,3 +1,8 @@
+export let rerenderEntireTree = () => {
+    console.log('rerender complete')
+}
+
+
 let state = {
 
     profilePage: {
@@ -13,6 +18,7 @@ let state = {
                 likesCount: 11
             },
         ],
+        newPostText: 'default'
     },
     dialogsPage: {
         dialogsData : [
@@ -60,8 +66,28 @@ let state = {
             avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png',
             name: 'Маша'
         },
-    ]
-
+    ],
 }
+
+window.state = state
+
+export let addPost = () => {
+    let newPost = {
+        id: 3,
+        message: state.profilePage.newPostText,
+        likesCount: 100
+    };
+
+    state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
+    console.log(state.profilePage.newPostText)
+    rerenderEntireTree(state)
+};
+
+export let changeTextPost = (postMessage) => {
+    state.profilePage.newPostText = postMessage;
+    rerenderEntireTree(state)
+};
+
 
 export default state
