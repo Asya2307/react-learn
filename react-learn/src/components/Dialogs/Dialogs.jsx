@@ -10,15 +10,13 @@ const Dialogs = (props) => {
     );
 
     let message = props.state.messagesData.map(m => <MessagesItem id={m.id} message={m.message} />);
+    let textMessage =  React.createRef();
 
 
     let sendMessage = () => {
         let text = textMessage;
         alert(text)
     }
-
-    let textMessage =  React.createRef();
-
 
     return (
         <div className={s.dialogs}>
