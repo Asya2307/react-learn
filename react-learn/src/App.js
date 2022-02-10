@@ -8,6 +8,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 
 function App(props) {
+    console.log(props.store.getState())
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -15,8 +16,8 @@ function App(props) {
                 <Navbar state={props.state.sidebar}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/profile' element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch}  />}/>
-                        <Route path='/messages/*' element={<Dialogs state={props.state.dialogsPage} />}/>
+                        <Route path='/profile' element={<Profile store={props.store}  />}/>
+                        <Route path='/messages/*' element={<Dialogs  store={props.store}/>}/>
                     </Routes>
                 </div>
             </div>
