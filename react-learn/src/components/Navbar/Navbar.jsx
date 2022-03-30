@@ -15,10 +15,12 @@ const Navbar = (props) => {
             <li className={s.item}>
                 <NavLink className={navData => navData.isActive ? s.active : s.link} to='/messages'>Messages</NavLink>
             </li>
+            <li className={s.item}>
+                <NavLink className={navData => navData.isActive ? s.active : s.link} to='/users'>Friends</NavLink>
+            </li>
         </ul>
         <div>
     <span>
-        Friends
     </span>
             <div className={s.sidebar}>
                 {/*{sideBar}*/}
