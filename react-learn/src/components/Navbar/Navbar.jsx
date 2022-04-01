@@ -4,8 +4,6 @@ import {NavLink} from "react-router-dom";
 import SideBar from "../Sidebar/Sidebar";
 
 const Navbar = (props) => {
-    // let state =  props.sidebar.sidebar;
-    // let sideBar = state.map(s => <SideBar avatar={s.avatar} name={s.name} />)
 
     return <nav className={s.nav}>
         <ul>
