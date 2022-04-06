@@ -1,27 +1,29 @@
 import React from 'react';
 import styles from './Users.module.css';
-import axios from "axios";
 import userPhoto from '../../assets/img/user.jpg'
 
 let Users = (props) => {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
+    let pages = [];
 
-    let getUsers = () =>
-    {
-        if (!props.users.length) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                props.setUsers(
-                    response.data.items
-                )
-            });
-        }
+    for (let i = 1; i <= pagesCount; i++ ) {
+        pages.push(i);
     }
-
     return <div>
-        <button onClick={getUsers}>Get Users</button>
-
+        <div>
+            <ul className={styles.pagination}>
+                {pages.map(p => {
+                    return <li className={p === props.currentPage && styles.selected}>
+                        <button onClick={() => {
+                            props.onPageChanged(p)
+                        }}>{p}</button>
+                    </li>
+                })}
+            </ul>
+        </div>
         {
-            props.users.map(u => <div >
+            props.users.map(u => <div>
                 <span>
                     <div>
                         <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.userPhoto}/>
@@ -50,6 +52,7 @@ let Users = (props) => {
             </div>)
         }
     </div>
+
 }
 
 export default Users;
