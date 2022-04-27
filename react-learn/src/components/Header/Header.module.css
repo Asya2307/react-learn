@@ -1,8 +1,15 @@
 .header {
+    display: flex;
     grid-area: header;
     background-color: green;
 }
 
 .header img {
     height: 100%;
+}
+
+.loginLink {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
 }

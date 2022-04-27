@@ -1,55 +1,20 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const CHANGE_MESSAGE = 'CHANGE-MESSAGE';
+const SET_USER_DATA = 'SET_USER_DATA';
 
 let initalState = {
-    dialogsData : [
-        {
-            id: 1,
-            name: 'Анастасия'
-        },
-        {
-            id: 2,
-            name: 'Валера'
-        },
-        {
-            id: 3,
-            name: 'Владимир'
-        }
-    ],
-    messagesData : [
-        {
-            id: 1,
-            message: 'Hi'
-        },
-        {
-            id: 2,
-            message: 'How are you?'
-        },
-        {
-            id: 3,
-            message: 'What are you doing'
-        }
-    ],
-    newMessageText: 'Hello'
+    userId: null,
+    email: null,
+    login: null,
+    isAuth: false,
+    isFetching: false
 }
-
-export const dialogsReducer = (state = initalState, action) => {
+//Редьюсер это чистая функция, которая принимает старый стейт, экшн и возвращает новый стейт
+export const authReducer = (state = initalState, action) => {
     switch (action.type) {
-        case ADD_MESSAGE: {
+        case SET_USER_DATA: {
             return {
                 ...state,
-                messagesData: [...state.messagesData, {
-                    id: 4,
-                    message: state.newMessageText
-                }],
-                newMessageText: '',
-            };
-        }
-
-        case CHANGE_MESSAGE: {
-            return {
-                ...state,
-                newMessageText: action.dialogMessage
+                ...action.data,
+                isAuth: true
             };
         }
         default:
@@ -57,17 +22,8 @@ export const dialogsReducer = (state = initalState, action) => {
     }
 }
 
-export default dialogsReducer;
+export default authReducer;
 
-export const addMessageActionCreator = () => (
-    {
-        type: ADD_MESSAGE
-    }
-);
+export const setAuthUserData = (userId, email,login) => ({type: SET_USER_DATA, data: {userId, email, login}});
 
-export const changeMessageActionCreator = (text) => (
-    {
-        type: CHANGE_MESSAGE,
-        dialogMessage: text
-    }
-);
+
